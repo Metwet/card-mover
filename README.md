@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Card Mover
 
-## Getting Started
+Интерактивное приложение для работы с карточками на canvas. Позволяет перетаскивать карточки, выбирать их с помощью рамки выделения и управлять их положением на холсте.
 
-First, run the development server:
+## Технологии
+
+### Core
+- **Next.js 16.1.6** - React фреймворк с Server-Side Rendering
+- **React 19.2.3** - библиотека для построения пользовательских интерфейсов
+- **TypeScript 5** - типизированный JavaScript
+
+### UI библиотеки
+- **Material-UI (MUI) 7.3.7** - компонентная библиотека для React
+- **@mui/icons-material** - набор иконок Material Design
+- **Emotion** - CSS-in-JS библиотека для стилизации компонентов
+
+### Canvas и графика
+- **Konva 10.2.0** - библиотека для работы с 2D canvas
+- **react-konva 19.2.2** - React обёртка для Konva
+
+### State Management
+- **Zustand 5.0.11** - легковесная библиотека для управления состоянием
+- **Immer 11.1.3** - упрощение работы с иммутабельным состоянием
+
+### Архитектура
+Проект следует принципам **Feature-Sliced Design** (FSD):
+- `entities/` - бизнес-сущности (card)
+- `features/` - функциональности (card-canvas, card-list)
+- `widgets/` - композитные блоки (dashboard)
+
+## Установка и запуск
+
+### Требования
+- Node.js 20+
+- pnpm (используется в проекте)
+
+### Установка зависимостей
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Запуск в режиме разработки
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+### Сборка для production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Запуск production сборки
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm start
+```
 
-## Deploy on Vercel
+### Линтинг
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Структура проекта
+
+```
+src/
+├── app/              # Next.js App Router
+├── entities/         # Бизнес-сущности
+│   └── card/         # Модели и UI карточек
+├── features/         # Функциональные модули
+│   ├── card-canvas/  # Canvas с перетаскиванием
+│   └── card-list/    # Список карточек
+├── widgets/          # Композитные блоки
+│   └── dashboard/    # Главная страница
+└── theme/            # Тема и стили
+```
