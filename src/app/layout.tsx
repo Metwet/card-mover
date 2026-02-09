@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import ThemeRegistry from "@/theme/ThemeRegistry";
+import { Providers } from "@/app/providers";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={montserrat.variable}>
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
