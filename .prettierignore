@@ -1,0 +1,8 @@
+node_modules
+*.log
+*.lock
+.DS_Store
+build
+dist
+.prettierrc.jsonc
+

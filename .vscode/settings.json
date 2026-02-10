@@ -1,0 +1,62 @@
+{
+  // Настройки валидации JSON
+  // Включаем валидацию JSON (по умолчанию включена, но явно указываем для ясности)
+  "json.validate.enable": true,
+  // Ассоциации файлов: определяем, как редактор должен обрабатывать определенные файлы
+  "files.associations": {
+    // Обрабатывать app.json как JSONC (JSON with Comments), так как Expo поддерживает комментарии
+    "app.json": "jsonc"
+  },
+  // Настройки для файлов JSONC (JSON with Comments)
+  "[jsonc]": {
+    // Использовать Prettier как форматтер по умолчанию для JSONC файлов
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  // Настройки форматирования для TypeScript файлов
+  "[typescript]": {
+    // Использовать Prettier как форматтер по умолчанию для TypeScript
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Автоматически форматировать код при сохранении файла
+    "editor.formatOnSave": true
+  },
+  // Настройки форматирования для TypeScript React файлов (.tsx)
+  "[typescriptreact]": {
+    // Использовать Prettier как форматтер по умолчанию для TypeScript React
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Автоматически форматировать код при сохранении файла
+    "editor.formatOnSave": true
+  },
+  // Настройки форматирования для JavaScript файлов
+  "[javascript]": {
+    // Использовать Prettier как форматтер по умолчанию для JavaScript
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Автоматически форматировать код при сохранении файла
+    "editor.formatOnSave": true
+  },
+  // Настройки форматирования для JavaScript React файлов (.jsx)
+  "[javascriptreact]": {
+    // Использовать Prettier как форматтер по умолчанию для JavaScript React
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Автоматически форматировать код при сохранении файла
+    "editor.formatOnSave": true
+  },
+  // Общие настройки форматирования (применяются ко всем файлам, если не переопределены)
+  // Автоматически форматировать код при сохранении файла
+  "editor.formatOnSave": true,
+  // Использовать Prettier как форматтер по умолчанию для всех файлов
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Настройки автоматических действий при сохранении файла
+  "editor.codeActionsOnSave": {
+    // Автоматически исправлять все исправимые ошибки ESLint при сохранении
+    // "explicit" означает, что действие выполняется только если явно указано в настройках
+    "source.fixAll.eslint": "explicit"
+  },
+  // Настройки ESLint: список языков, для которых должен работать ESLint
+  "eslint.validate": [
+    "javascript", // Обычные JavaScript файлы (.js)
+    "javascriptreact", // JavaScript React файлы (.jsx)
+    "typescript", // TypeScript файлы (.ts)
+    "typescriptreact" // TypeScript React файлы (.tsx)
+  ]
+}
