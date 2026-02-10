@@ -1,9 +1,9 @@
 "use client";
 
-import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { darkTheme } from "@/shared/config/theme";
 import { ReactNode } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import { darkTheme } from "@/shared/config/theme";
 
 /**
  * @description Провайдер темы (MUI)

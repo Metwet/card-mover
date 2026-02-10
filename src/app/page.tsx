@@ -1,4 +1,4 @@
-import { Dashboard } from '@/widgets/dashboard/ui/Dashboard';
+import { Dashboard } from "@/widgets/dashboard";
 
 export default function Home() {
   return <Dashboard />;

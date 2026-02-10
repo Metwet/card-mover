@@ -1,7 +1,6 @@
-import { Box, Typography, Stack } from '@mui/material';
-import { Card, ACCEPTANCE_STAGES } from '@/entities/card/model/types';
-import { CardItem } from '@/entities/card/ui/CardItem';
-import { cardListContainerStyles, cardListTitleStyles } from './CardList.styles';
+import { Box, Stack, Typography } from "@mui/material";
+import { cardListContainerStyles, cardListTitleStyles } from "./styles";
+import { ACCEPTANCE_STAGES, Card, CardItem } from "@/entities/card";
 
 interface CardListProps {
   onCardDragStart: (card: Card) => void;
