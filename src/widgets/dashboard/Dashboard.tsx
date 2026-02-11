@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import { Box } from '@mui/material';
-import { CardList } from '@/features/card-list/ui/CardList';
-import { CardCanvas } from '@/features/card-canvas/ui/CardCanvas';
-import { Card, CanvasCard } from '@/entities/card/model/types';
-import { dashboardContainerStyles } from './Dashboard.styles';
+import { useState, useRef } from "react";
+import { Box } from "@mui/material";
+import { dashboardContainerStyles } from "./styles";
+import { CardCanvas } from "@/features/card-canvas";
+import { CardList } from "@/features/card-list";
+import { Card, CanvasCard } from "@/entities/card";
 
 export const Dashboard = () => {
   const [canvasCards, setCanvasCards] = useState<CanvasCard[]>([]);
@@ -33,7 +33,7 @@ export const Dashboard = () => {
 
   const handleCardUpdate = (id: string, updates: Partial<CanvasCard>) => {
     setCanvasCards((prev) =>
-      prev.map((card) => (card.id === id ? { ...card, ...updates } : card))
+      prev.map((card) => (card.id === id ? { ...card, ...updates } : card)),
     );
   };
 

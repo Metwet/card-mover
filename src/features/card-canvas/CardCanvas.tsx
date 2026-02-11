@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Stage, Layer } from "react-konva";
-import { KonvaEventObject } from "konva/lib/Node";
+import { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
-import { CanvasCard as CanvasCardType } from "@/entities/card/model/types";
-import { CanvasCard } from "./CanvasCard";
-import { SelectionBox } from "./SelectionBox";
-import { canvasContainerStyles } from "./CardCanvas.styles";
+import { KonvaEventObject } from "konva/lib/Node";
+import { Layer, Stage } from "react-konva";
+import { canvasContainerStyles } from "./styles";
+import { CanvasCard } from "./ui/CanvasCard";
+import { SelectionBox } from "./ui/SelectionBox";
+import type { CanvasCard as CanvasCardType } from "@/entities/card";
 
 interface SelectionRect {
   x: number;
@@ -29,9 +29,13 @@ export const CardCanvas = ({
 }: CardCanvasProps) => {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
-  const [selectionRect, setSelectionRect] = useState<SelectionRect | null>(null);
+  const [selectionRect, setSelectionRect] = useState<SelectionRect | null>(
+    null,
+  );
   const [isSelecting, setIsSelecting] = useState(false);
-  const [dragOffsets, setDragOffsets] = useState<Record<string, { x: number; y: number }>>({});
+  const [dragOffsets, setDragOffsets] = useState<
+    Record<string, { x: number; y: number }>
+  >({});
   const containerRef = useRef<HTMLDivElement>(null);
   const selectionStartRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -52,7 +56,7 @@ export const CardCanvas = ({
   const handleSelect = (id: string, isCtrlPressed?: boolean) => {
     if (isCtrlPressed) {
       setSelectedIds((prev) =>
-        prev.includes(id) ? prev.filter((sid) => sid !== id) : [...prev, id]
+        prev.includes(id) ? prev.filter((sid) => sid !== id) : [...prev, id],
       );
     } else {
       setSelectedIds([id]);
@@ -115,7 +119,13 @@ export const CardCanvas = ({
     selectionStartRef.current = null;
   };
 
-  const handleCardDragMove = (id: string, x: number, y: number, deltaX: number, deltaY: number) => {
+  const handleCardDragMove = (
+    id: string,
+    x: number,
+    y: number,
+    deltaX: number,
+    deltaY: number,
+  ) => {
     // Если карточка выделена вместе с другими, обновляем оффсеты для всех
     if (selectedIds.includes(id) && selectedIds.length > 1) {
       const newOffsets: Record<string, { x: number; y: number }> = {};
@@ -134,7 +144,13 @@ export const CardCanvas = ({
     }
   };
 
-  const handleCardDragEnd = (id: string, x: number, y: number, deltaX: number, deltaY: number) => {
+  const handleCardDragEnd = (
+    id: string,
+    x: number,
+    y: number,
+    deltaX: number,
+    deltaY: number,
+  ) => {
     // Если карточка выделена вместе с другими, двигаем всю группу
     if (selectedIds.includes(id) && selectedIds.length > 1) {
       selectedIds.forEach((selectedId) => {

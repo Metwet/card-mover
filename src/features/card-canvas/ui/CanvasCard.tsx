@@ -1,13 +1,25 @@
 import { useRef, useEffect } from "react";
 import { Rect, Text, Group, Transformer } from "react-konva";
 import Konva from "konva";
-import { CanvasCard as CanvasCardType } from "@/entities/card/model/types";
+import type { CanvasCard as CanvasCardType } from "@/entities/card";
 
 interface CanvasCardProps {
   card: CanvasCardType;
   onSelect: (id: string, isCtrlPressed?: boolean) => void;
-  onDragMove: (id: string, x: number, y: number, deltaX: number, deltaY: number) => void;
-  onDragEnd: (id: string, x: number, y: number, deltaX: number, deltaY: number) => void;
+  onDragMove: (
+    id: string,
+    x: number,
+    y: number,
+    deltaX: number,
+    deltaY: number,
+  ) => void;
+  onDragEnd: (
+    id: string,
+    x: number,
+    y: number,
+    deltaX: number,
+    deltaY: number,
+  ) => void;
   onTransform: (id: string, width: number, height: number) => void;
 }
 
@@ -25,7 +37,8 @@ export const CanvasCard = ({
   const { id, x, y, text, isSelected, width, height, color } = card;
 
   const handleSelect = (e: Konva.KonvaEventObject<MouseEvent | TouchEvent>) => {
-    const isCtrlPressed = 'ctrlKey' in e.evt && (e.evt.ctrlKey || e.evt.metaKey);
+    const isCtrlPressed =
+      "ctrlKey" in e.evt && (e.evt.ctrlKey || e.evt.metaKey);
     onSelect(id, isCtrlPressed);
   };
 
@@ -45,8 +58,12 @@ export const CanvasCard = ({
   const handleDragEnd = (e: Konva.KonvaEventObject<DragEvent>) => {
     const newX = e.target.x();
     const newY = e.target.y();
-    const deltaX = dragStartPosRef.current ? newX - dragStartPosRef.current.x : 0;
-    const deltaY = dragStartPosRef.current ? newY - dragStartPosRef.current.y : 0;
+    const deltaX = dragStartPosRef.current
+      ? newX - dragStartPosRef.current.x
+      : 0;
+    const deltaY = dragStartPosRef.current
+      ? newY - dragStartPosRef.current.y
+      : 0;
     onDragEnd(id, newX, newY, deltaX, deltaY);
     dragStartPosRef.current = null;
   };
